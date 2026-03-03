@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
+# Installs and configures Nginx to serve 'Holberton School for the win!'
+
+# Exit on error
+set -e
+
 # Update package lists
 apt-get update -y
 
-# Install nginx
+# Install Nginx
 apt-get install -y nginx
 
-# Create custom index.html with required string
+# Write the required message into the default index.html
 echo "Holberton School for the win!" > /var/www/html/index.html
 
-# Start nginx service (using service instead of systemctl)
-service nginx start
+# Restart and enable Nginx
+systemctl restart nginx
+systemctl enable nginx
